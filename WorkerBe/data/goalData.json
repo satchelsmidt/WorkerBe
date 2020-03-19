@@ -1,0 +1,15 @@
+{
+    "owner_id": "1",
+    "board_member_ids": [
+        {
+            "user_id": "2"
+        }
+    ],
+    "goal_id": "1",
+    "goal_name": "Eat chicken",
+    "goal_desc": "I really like to eat chicken so I want to do it",
+    "goal_start": "01-03-2020",
+    "goal_end": "01-25-2020",
+    "goal_progress": ".5",
+    "date_created": "01-01-2020",
+}

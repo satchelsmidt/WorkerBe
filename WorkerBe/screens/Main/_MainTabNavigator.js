@@ -1,22 +1,28 @@
 //Show this screen when the user is successfully signed in
 
-import React from 'react'
+//Importing navigation components + pages + other needed
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import Profile from './Profile'
+import Goals from './Goals'
+import Board from './Board'
+import People from './People'
+import React from 'react'
+import { Button } from 'react-native';
 
-import { View, Text, Button } from 'react-native';
-
-
+//Creating navigation components
 const Tab = createBottomTabNavigator();
-
 const Stack = createStackNavigator();
 
+//Set initial route variable
 const INITIAL_ROUTE_NAME = 'Profile';
 
+//Create Tab Navigation component
 export default function BottomTabNavigator({ navigation, route }) {
 
+  //Configure header based on current tab
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
-  navigation.setOptions({ headerRight: ()=>(getUpperRightButtons(route)) });
+  navigation.setOptions({ headerRight: () => (getUpperRightButtons(route)) });
 
   return (
     <Tab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
@@ -24,126 +30,65 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Profile"
         component={Profile}
         options={{
-          title: 'prof',
-          headerRight: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="black"
-            />
-          )
+          title: 'Profile',
         }}
       />
       <Stack.Screen
         name="Goals"
         component={Goals}
         options={{
-          title: 'go',
-          headerRight: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="black"
-            />
-          )
+          title: 'Goals',
         }}
       />
       <Stack.Screen
         name="Board"
         component={Board}
-        options={{ title: 'bore' }}
+        options={{
+          title: 'Board'
+        }}
       />
       <Stack.Screen
         name="People"
         component={People}
-        options={{ title: 'peep' }}
+        options={{
+          title: 'People'
+        }}
       />
     </Tab.Navigator>
   );
 }
 
-function Profile() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
-    </View>
-  )
-}
-
-function Goals() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Goals Screen</Text>
-    </View>
-  );
-}
-
-function Board() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Board Screen</Text>
-    </View>
-  );
-}
-
-
-function People() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>People Screen</Text>
-    </View>
-  )
-}
-
 function getHeaderTitle(route) {
-  // console.log(route)
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
     case 'Profile':
-      return 'what hello';
+      return 'Profile';
     case 'Goals':
-      return 'GOAL';
+      return 'Goals';
     case 'Board':
-      return 'board';
+      return 'Board';
     case 'People':
-      return 'things about person';
+      return 'People I Advise';
   }
 }
 
 function getUpperRightButtons(route) {
-  console.log('route NAME: ', route)
-
-
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
-
-  // console.log('route NAME: ', routename)
 
   switch (routeName) {
     case 'Profile':
       return (<Button
-          onPress={() => alert('This is a button!')}
-          title="Info"
-          color="black"
-        />)
+        onPress={() => alert('This is a button!')}
+        title="Edit Profile"
+        color="black"
+      />)
     case 'Goals':
       return (<Button
         onPress={() => alert('This is a button!')}
-        title="goo"
+        title="Add Goal"
         color="black"
       />)
-    case 'Board':
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="Boar"
-        color="black"
-      />
-    case 'People':
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="pers"
-        color="black"
-      />
   }
 }
 

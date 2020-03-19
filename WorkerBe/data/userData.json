@@ -1,0 +1,19 @@
+{
+    "name": "Satchel",
+    "email": "satchelsmidt@gmail.com",
+    "phone": "253-514-0736",
+    "linkedin": "satchelsmidt",
+    "image": "FAKEURL",
+    "user_id": "1",
+    "board_members": [
+        {
+            "user_id": "2"
+        }
+    ],
+    "on_boards_for": [
+        {
+            "user_id": "2"
+        }
+    ],
+    "sign_up_date":"03-03-2020"
+}
